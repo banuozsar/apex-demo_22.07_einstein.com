@@ -1,0 +1,21 @@
+<apex:page
+  renderAs="pdf"
+  applyHtmlTag="false"
+  showHeader="false"
+  cache="true"
+  readOnly="true"
+>
+  <html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+      <style>
+        @page {
+          size: a4 portrait;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Test to see if this will generate</h1>
+    </body>
+  </html>
+</apex:page>

@@ -1,0 +1,19 @@
+<apex:page>
+  <apex:includeLightning />
+
+  <div id="lightningvf" />
+
+  <script>
+    $Lightning.use("c-opp-add-comment:lwcvf", function () {
+      $Lightning.createComponent(
+        "lightning:button",
+        { label: "Download PDF" },
+        "lightningvf",
+        function (cmp) {
+          console.log("button was created");
+          // do some stuff
+        }
+      );
+    });
+  </script>
+</apex:page>
