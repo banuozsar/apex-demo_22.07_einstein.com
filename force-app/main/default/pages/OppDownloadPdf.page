@@ -1,19 +1,22 @@
-<apex:page>
-  <apex:includeLightning />
-
-  <div id="lightningvf" />
-
-  <script>
-    $Lightning.use("c-opp-add-comment:lwcvf", function () {
-      $Lightning.createComponent(
-        "lightning:button",
-        { label: "Download PDF" },
-        "lightningvf",
-        function (cmp) {
-          console.log("button was created");
-          // do some stuff
+<apex:page
+  renderAs="pdf"
+  applyHtmlTag="false"
+  showHeader="false"
+  cache="true"
+  readOnly="true"
+>
+  <html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+      <style>
+        @page {
+          size: a4 portrait;
         }
-      );
-    });
-  </script>
+      </style>
+    </head>
+    <body>
+      {! $Opportunity.Amount } {! $Opportunity.Name } ({!
+      $Opportunity.Comment__c })
+    </body>
+  </html>
 </apex:page>

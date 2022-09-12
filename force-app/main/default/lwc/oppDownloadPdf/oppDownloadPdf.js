@@ -1,9 +1,12 @@
-import { LightningElement } from "lwc";
+import { LightningElement, api } from "lwc";
 import { loadScript } from "lightning/platformResourceLoader";
 import downloadjs from "@salesforce/resourceUrl/downloadjs";
 import downloadPDF from "@salesforce/apex/PrintJobPDFController.getPdfFileAsBase64String";
 
-export default class OppDownloadPdf extends LightningElement {
+export default class oppDownloadPdf extends LightningElement {
+  @api recordId;
+  @api objectApiName;
+
   boolShowSpinner = false;
   pdfString;
   downloadPdf() {
