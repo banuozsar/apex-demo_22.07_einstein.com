@@ -4,6 +4,7 @@
   showHeader="false"
   cache="true"
   readOnly="true"
+  standardController="Opportunity"
 >
   <html>
     <head>
@@ -15,8 +16,8 @@
       </style>
     </head>
     <body>
-      {! $Opportunity.Amount } {! $Opportunity.Name } ({!
-      $Opportunity.Comment__c })
+      <h1>Test to see if this will generate</h1>
+      <apex:outputField value="{! Opportunity.Name }" />
     </body>
   </html>
 </apex:page>
