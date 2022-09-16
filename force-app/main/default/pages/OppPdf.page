@@ -1,0 +1,33 @@
+<apex:page standardController="Opportunity" renderAs="pdf">
+  <h1>Welcome to Universal Samples!</h1>
+
+  <p>
+    Thank you, <b><apex:outputText value=" {!opportunity.name}" /></b>, for
+    becoming a new account with Universal Samples.
+  </p>
+
+  <p>Your account details are:</p>
+
+  <table>
+    <tr>
+      <th>Account Name</th>
+      <td><apex:outputText value="{!opportunity.Account.name}" /></td>
+    </tr>
+    <tr>
+      <th>Opportunity Name</th>
+      <td><apex:outputText value="{!opportunity.name}" /></td>
+    </tr>
+    <tr>
+      <th>Account Rep</th>
+      <td><apex:outputText value="{!opportunity.Owner.name}" /></td>
+    </tr>
+    <tr>
+      <th>Customer Since</th>
+      <td><apex:outputText value="{!opportunity.createdDate}" /></td>
+    </tr>
+    <tr>
+      <th>OpportunityLineItems</th>
+      <td><apex:outputText value="{!opportunity.OpportunityLineItems}" /></td>
+    </tr>
+  </table>
+</apex:page>

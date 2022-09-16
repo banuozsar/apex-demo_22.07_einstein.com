@@ -2,13 +2,13 @@ import { LightningElement, api } from "lwc";
 import { loadScript } from "lightning/platformResourceLoader";
 import downloadjs from "@salesforce/resourceUrl/downloadjs";
 import downloadPDF from "@salesforce/apex/PrintJobPDFController.getPdfFileAsBase64String";
-
-export default class oppDownloadPdf extends LightningElement {
+export default class OppCommentAndDownloadPdf extends LightningElement {
   @api recordId;
   @api objectApiName;
 
   boolShowSpinner = false;
   pdfString;
+
   downloadPdf() {
     this.boolShowSpinner = true;
     downloadPDF({})
@@ -18,10 +18,12 @@ export default class oppDownloadPdf extends LightningElement {
         this.boolShowSpinner = false;
         window.download(strFile, "sample.pdf", "application/pdf");
       })
+
       .catch((error) => {
         console.log("Error: " + error.body.message);
       });
   }
+
   renderedCallback() {
     loadScript(this, downloadjs)
       .then(() => console.log("Loaded download.js"))

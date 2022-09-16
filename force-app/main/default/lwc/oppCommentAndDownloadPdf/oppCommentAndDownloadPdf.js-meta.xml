@@ -7,9 +7,10 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordAction">
-            <objects>
-                <object>Opportunity</object>
-            </objects>
+        <objects>
+          <object>Opportunity</object>
+        </objects>
+        <actionType>ScreenAction</actionType>
         </targetConfig>
-    </targetConfigs>
+     </targetConfigs>
 </LightningComponentBundle>
