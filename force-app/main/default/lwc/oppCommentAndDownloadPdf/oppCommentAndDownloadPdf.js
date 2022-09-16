@@ -2,6 +2,7 @@ import { LightningElement, api } from "lwc";
 import { loadScript } from "lightning/platformResourceLoader";
 import downloadjs from "@salesforce/resourceUrl/downloadjs";
 import downloadPDF from "@salesforce/apex/PrintJobPDFController.getPdfFileAsBase64String";
+//import { getRecord, getFieldDisplayValue } from 'lightning/uiRecordApi';
 export default class OppCommentAndDownloadPdf extends LightningElement {
   @api recordId;
   @api objectApiName;
