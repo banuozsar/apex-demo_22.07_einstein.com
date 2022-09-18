@@ -2,8 +2,11 @@ import { LightningElement, api } from "lwc";
 import { loadScript } from "lightning/platformResourceLoader";
 import downloadjs from "@salesforce/resourceUrl/downloadjs";
 import downloadPDF from "@salesforce/apex/PrintJobPDFController.getPdfFileAsBase64String";
+import { NavigationMixin } from "lightning/navigation";
 //import { getRecord, getFieldDisplayValue } from 'lightning/uiRecordApi';
-export default class OppCommentAndDownloadPdf extends LightningElement {
+export default class OppCommentAndDownloadPdf extends NavigationMixin(
+  LightningElement
+) {
   @api recordId;
   @api objectApiName;
 
@@ -29,5 +32,15 @@ export default class OppCommentAndDownloadPdf extends LightningElement {
     loadScript(this, downloadjs)
       .then(() => console.log("Loaded download.js"))
       .catch((error) => console.log(error));
+  }
+  actionToVFNav() {
+    this[NavigationMixin.GenerateUrl]({
+      type: "standard__webPage",
+      attributes: {
+        url: "/apex/OppPdf?id=" + this.recordId
+      }
+    }).then((generatedUrl) => {
+      window.open(generatedUrl);
+    });
   }
 }
