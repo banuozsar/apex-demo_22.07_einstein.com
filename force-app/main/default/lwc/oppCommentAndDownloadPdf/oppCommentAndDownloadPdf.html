@@ -3,26 +3,11 @@
     <div class="slds-var-m-bottom_x-small">
       <lightning-record-edit-form
         object-api-name={objectApiName}
-        record-id={recordId}
-        onsuccess={downloadPdf}
-      >
+        record-id={recordId}>
         <lightning-messages></lightning-messages>
         <lightning-input-field field-name="Comment__c"></lightning-input-field>
         <div class="slds-var-p-around_medium">
-          <lightning-button
-            variant="brand"
-            class="slds-var-m-left_xxx-small"
-            label="Save and Download Pdf"
-            type="submit"
-          ></lightning-button>
-        </div>
-        <div class="slds-var-p-around_medium">
-          <lightning-button
-            variant="brand"
-            class="slds-var-m-left_xxx-small"
-            label="PDF"
-            onclick={actionToVFNav}
-          ></lightning-button>
+          <lightning-button variant="brand" class="slds-var-m-left_xxx-small" label="Save and Download Pdf" type="submit" onclick={actionToVFNav}></lightning-button>
         </div>
       </lightning-record-edit-form>
     </div>
