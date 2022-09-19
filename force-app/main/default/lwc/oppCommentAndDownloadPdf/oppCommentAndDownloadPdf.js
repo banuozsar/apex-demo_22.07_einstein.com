@@ -1,11 +1,10 @@
 import { LightningElement, api} from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
 import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 
+/* import { getRecord } from 'lightning/uiRecordApi';
 import ID_FIELD from '@salesforce/schema/Opportunity.Id';
-
-const fields = [ID_FIELD];
+const fields = [ID_FIELD]; */
 
 export default class OppCommentAndDownloadPdf extends NavigationMixin(LightningElement) {
   @api recordId;
