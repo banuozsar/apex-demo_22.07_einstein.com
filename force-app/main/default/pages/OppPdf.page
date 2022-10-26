@@ -1,4 +1,4 @@
-<apex:page standardcontroller="Opportunity" showHeader="false" renderAs="pdf">
+<apex:page controller="OppPdfController" showHeader="false" renderAs="pdf">
 <apex:form>
     <apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png"/>
     <div align="left"><span style="font-family: sans-serif; font-size:10pt; color: rgb(8, 137, 189)"><strong>Salesforce Samples</strong></span></div>
@@ -12,47 +12,47 @@
 
     <table>
     <tr><th>Customer Name:</th>
-        <td><apex:outputText value="{!opportunity.Account.Name}"/></td>
+        <td><apex:outputText value="{!acc.Name}"/></td>
         </tr>
     <tr><th>Opportunity Name:</th>
-        <td><apex:outputText value="{!opportunity.Name}"/></td>
+        <td><apex:outputText value="{!opp.Name}"/></td>
         </tr>
     <tr><th>Sales Representative:</th>
-        <td><apex:outputText value="{!opportunity.Owner.name}"/></td>
+        <td><apex:outputText value="{!opp.Owner.name}"/></td>
         </tr>
     <tr><th>Close Date:</th>
         <td><apex:outputText value="{0,date,MM/dd/yyyy}">
-            <apex:param value="{!opportunity.CloseDate}"/>
+            <apex:param value="{!opp.CloseDate}"/>
         </apex:outputText></td>
         </tr>
     </table>
 
     <br/><apex:pageBlock>    
-        <apex:pageblocktable value="{!Opportunity.OpportunityLineItems}" var="item" border="0,9px" width="100%" columnsWidth="35%,20%,12%,15%,18%">
-            <apex:column value="{!item.PricebookEntry.Name}"/>
-            <apex:column value="{!item.Description}"/>
-            <apex:column value="{!item.Quantity}"/>
-            <apex:column value="{!item.UnitPrice}">
+        <apex:pageblocktable value="{!oppItems}" var="oppItem" border="0,9px" width="100%" columnsWidth="32%,22%,9%,17%,20%">
+            <apex:column value="{!oppItem.Product2.Name}"/>
+            <apex:column value="{!oppItem.Description}"/>
+            <apex:column value="{!oppItem.Quantity}"/>
+            <apex:column value="{!oppItem.UnitPrice}">
                 <apex:facet name="footer">
                     <apex:outputText value="Total"/>
                 </apex:facet>
             </apex:column>
-            <apex:column value="{!item.TotalPrice}">
+            <apex:column value="{!oppItem.TotalPrice}">
                 <apex:facet name="footer">
-                    ${!Opportunity.Amount}
+                    {!opp.CurrencyIsoCode} {!opp.Amount}
                 </apex:facet>
             </apex:column>
         </apex:pageblocktable>
     </apex:pageBlock>
 
-    <p style="font-size: 90%"><strong>Remarks: </strong><apex:outputText value="{!opportunity.Comment__c}"/></p>
+    <p style="font-size: 90%"><strong>Remarks: </strong><apex:outputText value="{!opp.Comment__c}"/></p>
 
 	<div style="color: #999999; font-size: 90%; margin-top: 15px;">
         It's a pleasure to have you on board.  Please do not hesitate to contact us should you have any questions or concerns.<br/>
         Sincerely,<br/>
 
-		<apex:outputText value=" {!opportunity.Owner.name}"/><br/>
-        <em><apex:outputText value="{!opportunity.Owner.email}"/></em></div>
+		<apex:outputText value=" {!opp.Owner.name}"/><br/>
+        <em><apex:outputText value="{!opp.Owner.email}"/></em></div>
 
         <br/><div align="center" style="color: #999999; font-size: 90%; margin-top: 15px;">Above information is not an invoice and only an estimate of services and/or goods described.</div>
 
