@@ -19,7 +19,8 @@ public without sharing class OppPdfController {
                       Owner.Name,
                       Owner.Email,
                       Comment__c,
-                      CurrencyIsoCode
+                      CurrencyIsoCode,
+                      HasOpportunityLineItem
                  FROM Opportunity
                 WHERE Id = :ApexPages.currentPage().getParameters().get('id')
                 LIMIT 1];
